@@ -19,7 +19,8 @@ RUN apt-get update && \
     libzmq3-dev \
     libgoogle-glog-dev \
     cmake \
-    libbsd-dev
+    libbsd-dev \
+    alsa-utils libasound2-dev
 
 COPY install/eventpp /tmp/install/eventpp
 RUN /tmp/install/eventpp/install_eventpp.sh 

@@ -4,6 +4,9 @@ project(unit_manager VERSION 1.6)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)  
+set(STACKFLOW_LIBRARY
+    "${CMAKE_SOURCE_DIR}/../install/lib/libstackflow.a"
+    CACHE FILEPATH "Path to the StackFlow static library")
 set(REQUIREMENTS  
     pthread 
     util 
@@ -31,8 +34,7 @@ file(GLOB_RECURSE SRCS "src/main.cpp"
 
 
 
-# find_package(simdjson REQUIRED)
-# link_directories(/usr/lib/x86_64-linux-gnu)
+find_package(simdjson REQUIRED)
 
 add_executable(${PROJECT_NAME}  ${SRCS})
 
@@ -46,8 +48,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     bsd
     gssapi_krb5
     zmq
-    /usr/local/lib/libsimdjson.a 
-    ${CMAKE_SOURCE_DIR}/../install/lib/libstackflow.a)
+    simdjson::simdjson
+    ${STACKFLOW_LIBRARY})
 
 
 

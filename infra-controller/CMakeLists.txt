@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
+project(stackflow)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(INSTALL_ROOT_DIR "${CMAKE_SOURCE_DIR}/../install")
@@ -26,5 +28,4 @@ install(TARGETS stackflow
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
 )
-
 

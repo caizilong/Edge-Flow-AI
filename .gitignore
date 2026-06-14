@@ -1,13 +1,13 @@
-*/build
 build
 install
 !docker/build
 !docker/build/install
 
-infra-controller/CMakeFiles
-infra-controller/cmake_install.cmake
-infra-controller/CMakeCache.txt
-infra-controller/Makefile
 core
+runtime/
 
-.vscode
+single_node_demo/voice
+single_node_demo/tts
+
+node/llm/model
+node/llm/rknn-llm

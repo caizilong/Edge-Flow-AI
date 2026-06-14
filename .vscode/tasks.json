@@ -1,0 +1,164 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "configure: StackFlow (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}/infra-controller",
+        "-B",
+        "/tmp/${workspaceFolderBasename}-vscode/infra-controller",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build: StackFlow (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "/tmp/${workspaceFolderBasename}-vscode/infra-controller",
+        "--parallel"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "configure: StackFlow (Debug)"
+      ],
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "configure: sample (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}/sample",
+        "-B",
+        "/tmp/${workspaceFolderBasename}-vscode/sample",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build: sample (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "/tmp/${workspaceFolderBasename}-vscode/sample",
+        "--parallel"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "configure: sample (Debug)"
+      ],
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "configure: unit_manager (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}/unit-manager",
+        "-B",
+        "/tmp/${workspaceFolderBasename}-vscode/unit-manager",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DSTACKFLOW_LIBRARY=/tmp/${workspaceFolderBasename}-vscode/infra-controller/libstackflow.a"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "build: StackFlow (Debug)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build: unit_manager (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "/tmp/${workspaceFolderBasename}-vscode/unit-manager",
+        "--parallel"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "configure: unit_manager (Debug)"
+      ],
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "configure: echo (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}/node/echo",
+        "-B",
+        "/tmp/${workspaceFolderBasename}-vscode/echo",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DSTACKFLOW_LIBRARY=/tmp/${workspaceFolderBasename}-vscode/infra-controller/libstackflow.a"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "build: StackFlow (Debug)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build: echo (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "/tmp/${workspaceFolderBasename}-vscode/echo",
+        "--parallel"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "configure: echo (Debug)"
+      ],
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "configure: RKLLM node (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}/node/llm",
+        "-B",
+        "/tmp/${workspaceFolderBasename}-vscode/rkllm",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DSTACKFLOW_LIBRARY=/tmp/${workspaceFolderBasename}-vscode/infra-controller/libstackflow.a"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "build: StackFlow (Debug)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build: RKLLM node (Debug)",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "/tmp/${workspaceFolderBasename}-vscode/rkllm",
+        "--parallel"
+      ],
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "configure: RKLLM node (Debug)"
+      ],
+      "problemMatcher": "$gcc"
+    }
+  ]
+}

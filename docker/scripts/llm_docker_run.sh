@@ -8,9 +8,9 @@ group="$(id -g -n)"
 gid="$(id -g)"
 
 
-echo "stop and rm docker" 
-docker stop llm > /dev/null
-docker rm -v -f llm > /dev/null
+# echo "stop and rm docker" 
+# docker stop llm > /dev/null
+# docker rm -v -f llm > /dev/null
 
 echo "start docker"
 docker run -it -d \
@@ -23,7 +23,8 @@ docker run -it -d \
 -e DOCKER_GRP="${group}" \
 -e DOCKER_GRP_ID="${gid}" \
 -e XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
--v ${MONITOR_HOME_DIR}:/work \
+-w /home/pi/Edge-LLM-Infra \
+-v ${MONITOR_HOME_DIR}:/home/pi/Edge-LLM-Infra \
 -v ${XDG_RUNTIME_DIR}:${XDG_RUNTIME_DIR} \
 --net host \
 llm:v1.0

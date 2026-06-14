@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
+project(samples)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -51,4 +53,3 @@ target_link_libraries(pz_rpc_server
     zmq 
     pthread
 )
-

@@ -239,7 +239,7 @@ void unit_action_match(int com_id, const std::string &json_str)
     }
     if (work_id.empty()) work_id = "sys";
     std::string action;
-    error = doc["action"].get_string().get(action);
+    error = doc["action"].get_string(action);
     if (error) {
         ALOGE("miss action, error:%s", simdjson::error_message(error));
         usr_print_error("0", "sys", "{\"code\":-2, \"message\":\"json format error\"}", com_id);

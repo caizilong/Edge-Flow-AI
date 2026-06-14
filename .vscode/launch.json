@@ -1,0 +1,132 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Sample: RPC server",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/tmp/${workspaceFolderBasename}-vscode/sample/rpc_server",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/sample",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "build: sample (Debug)",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Sample: RPC client",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/tmp/${workspaceFolderBasename}-vscode/sample/rpc_client",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/sample",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "build: sample (Debug)",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Service: unit_manager",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/tmp/${workspaceFolderBasename}-vscode/unit-manager/unit_manager",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/unit-manager/build",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "build: unit_manager (Debug)",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Node: echo",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/tmp/${workspaceFolderBasename}-vscode/echo/echo",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/node/echo",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "build: echo (Debug)",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Node: RKLLM",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/tmp/${workspaceFolderBasename}-vscode/rkllm/rkllm_node",
+      "args": [
+        "${workspaceFolder}/node/llm/model/Qwen3-1.7B.rkllm"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/node/llm",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "${workspaceFolder}/node/llm/rknn-llm/rkllm-runtime/Linux/librkllm_api/aarch64"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "build: RKLLM node (Debug)",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "C++: attach to process",
+      "type": "cppdbg",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
+        {
+          "description": "Enable GDB pretty printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
